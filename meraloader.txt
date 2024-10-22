@@ -1,3 +1,5 @@
 if game.PlaceId == 10449761463 then
   loadstring(game:HttpGet("https://raw.githubusercontent.com/Tunguyen1441/Toilatu/main/Strongetbattegounds"))()
+  elseif game.PlaceId == 93229012077312 then
+  loadstring(game:HttpGet("https://raw.githubusercontent.com/Tunguyen1441/Toilatu/main/SupperBadpiece"))()
 end
