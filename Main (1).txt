@@ -16,12 +16,7 @@ game.StarterGui:SetCore(
         Duration = 5
     })
 wait(0.3)
-require(game.ReplicatedStorage.Notification).new("<Color=Yellow>Weacome Wave Hub<Color=/>"):Display()
-wat(0.2)
-require(game.ReplicatedStorage.Notification).new("<Color=Yellow>Script By Nguyễn Tứ<Color=/>"):Display()
-wait(0.1)
-require(game.ReplicatedStorage.Notification).new("<Color=Yellow>Script Wave x Andepzai<Color=/>"):Display()
-
+require(game.ReplicatedStorage.Notification).new("<Color=Yellow>Weacome Wave Hub #Nguyentu4141<Color=/>"):Display()
 function PostWebhook(Url, message)
     local request = http_request or request or HttpPost or syn.request
     local data =
