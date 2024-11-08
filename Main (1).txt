@@ -91,12 +91,12 @@ local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/
 
 local Window = Fluent:CreateWindow({
     Title = "Wave Hub",
-    SubTitle = "Free",
+    SubTitle = "Free #Nguyentu4141",
     TabWidth = 110,
     Size = UDim2.fromOffset(480, 320),
     Acrylic = false,
     Theme = "Dark",
-    MinimizeKey = Enum.KeyCode.End
+    MinimizeKey = Enum.KeyCode.F15
 })
 
 local Tabs = {
@@ -129,13 +129,13 @@ ImageButton.BorderSizePixel = 0
 ImageButton.Position = UDim2.new(0.120833337, 0, 0.0952890813, 0)
 ImageButton.Size = UDim2.new(0, 50, 0, 50)
 ImageButton.Draggable = true
-ImageButton.Image = "http://www.roblox.com/asset/?id=18919385586"
+ImageButton.Image = "http://www.roblox.com/asset/?id=73063721695722"
 
-UICorner.CornerRadius = UDim.new(0, 10) 
+UICorner.CornerRadius = UDim.new(0, 9) 
 UICorner.Parent = ImageButton
 
 ImageButton.MouseButton1Down:Connect(function()
-    game:GetService("VirtualInputManager"):SendKeyEvent(true, Enum.KeyCode.End, false, game)
+    game:GetService("VirtualInputManager"):SendKeyEvent(true, Enum.KeyCode.F15, false, game)
 end)
 
 local function playSound()
@@ -164,7 +164,7 @@ if game.PlaceId == 2753915549 then
     elseif game.PlaceId == 7449423635 then
         AnDepZai3 = true
     else
-    game:GetService("Players").LocalPlayer:Kick(" Con Đĩ Mẹ Mày")
+    game:GetService("Players").LocalPlayer:Kick("Not Support")
   end
       
          hookfunction(require(game:GetService("ReplicatedStorage").Effect.Container.Death), function()end)
