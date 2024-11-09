@@ -1990,7 +1990,7 @@ local function ChangeModeFastAttack(SelectFastAttackMode)
 	elseif SelectFastAttackMode == "Fast Attack" then
 		FireCooldown = 0.07
 	elseif SelectFastAttackMode == "Super Attack" then
-		FireCooldown = 0.00
+		FireCooldown = 0.01
 	end
 end
 
@@ -2365,131 +2365,9 @@ Toggle:OnChanged(function(Value)
     StopTween(_G.AutoFarm)
 end)
 
-	
-spawn(function()
-    while wait() do
-        if _G.RaidPirate then
-            pcall(function()
-                local CFrameBoss = CFrame.new(-5496.17432, 313.768921, -2841.53027)
-                if (CFrame.new(-5539.3115234375, 313.800537109375, -2972.372314453125).Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 500 then
-                    for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-                        if _G.RaidPirate and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
-                            if (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude < 2000 then
-                                repeat task.wait()
-                                    AutoHaki()
-                                    EquipWeapon(_G.SelectWeapon)
-                                    v.HumanoidRootPart.CanCollide = false
-                                    topos(v.HumanoidRootPart.CFrame * Pos)
-                                until v.Humanoid.Health <= 0 or not v.Parent or not _G.RaidPirate
-                            end
-                        end
-                    end
-                else
-                    UnEquipWeapon(_G.SelectWeapon)
-                    if BypassTP then
-                    if (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - CFrameBoss.Position).Magnitude > 1500 then
-			        BTP(CFrameBoss)
-				    elseif (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - CFrameBoss.Position).Magnitude < 1500 then
-				    topos(CFrameBoss)
-					 end
-                 end
-          topos(CFrame.new(-5496.17432, 313.768921, -2841.53027))
-                end
-             end
-            )
-        end
-    end
-end
-)
-
-
-spawn(function()
-    while wait() do
-        pcall(function()
-            if _G.Auto_Nha_Dien and AnDepZai2 then
-                if game:GetService("Workspace").Enemies:FindFirstChild("Core") then
-                    for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-                        if v.Name == "Core" and v.Humanoid.Health > 0 then
-                            repeat task.wait()
-                                AutoHaki()         
-                                EquipWeapon(_G.SelectWeapon)           
-                                topos(CFrame.new(448.46756, 199.356781, -441.389252))
-                            until v.Humanoid.Health <= 0 or _G.Auto_Nha_Dien == false
-                        end
-                    end
-                else             
-                    topos(CFrame.new(448.46756, 199.356781, -441.389252))
-                end
-            end
-        end)
-    end
-end)
-
-local Ren = {
-    ["Snow Lurker"] = CFrame.new(5480.55762, 28.8536663, -6814.50293),
-    ["Arctic Warrior"] = CFrame.new(6118.56836, 28.3932438, -6259.84961)
-}
-
-spawn(function()
-    spawn(function()
-        while wait(.1) do
-            if RenGuKu and _G.BringMonster and AnDepZai2 then
-                pcall(function()
-                    for i, v in pairs(game.Workspace.Enemies:GetChildren()) do
-                        if v.Name == "Snow Lurker" or v.Name == "Arctic Warrior" then
-                            local targetCFrame = Ren[v.Name]
-                            if targetCFrame then
-                                v.HumanoidRootPart.CFrame = targetCFrame
-                            end
-                            v.Head.CanCollide = false
-                            v.Humanoid.Sit = false
-                            v.HumanoidRootPart.CanCollide = false
-                            v.Humanoid.JumpPower = 0
-                            v.Humanoid.WalkSpeed = 0
-                            if v.Humanoid:FindFirstChild('Animator') then
-                                v.Humanoid:FindFirstChild('Animator'):Destroy()
-                            end
-                            sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", math.huge)
-                        end
-                    end
-                end)
-            end
-        end
-    end)
-end)
-
-
-spawn(function()
-        pcall(function()
-            while wait(.1) do
-                if _G.Random_Auto then
-                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Cousin","Buy")
-                end 
-            end
-        end)
-    end)
-
-
-spawn(function()
-   while wait() do
-     if _G.RandomBone then
-        local args = {
-            [1] = "Bones",
-            [2] = "Buy",
-            [3] = 1,
-            [4] = 1
-            }
-            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-       end
-    end
-end)
-
-if AnDepZai3 then
-
-----Tween Nay No Se Check Distance Va Chon Diem De Tele Nhanh Nhat Nhe , Minh Thi Ko Ranh Nen Se Skid Cua May Hub Khac Va Gan Chuc Nang Minh Tu Lam
-local Hiz = Tabs.item:AddSection("Farm item")
-local Dropdown = Tabs.item:AddDropdown("DropdownFarm", {
-    Title = "item Sea 3",
+local Dumano = Tabs.Main:AddSection("Farm Items")
+local Dropdown = Tabs.Main:AddDropdown("DropdownFarm", {
+    Title = "item (Sea 3)",
     Values = {"Cacao", "Dragon Scale", "Leather"},
     Multi = false,
 })
@@ -2501,8 +2379,8 @@ end)
 end
 
 if AnDepZai2 then
-local Dropdown = Tabs.item:AddDropdown("DropdownFarm", {
-    Title = "item sea 2",
+local Dropdown = Tabs.Main:AddDropdown("DropdownFarm", {
+    Title = "item (sea 2)",
     Values = {"Mystic Droplet", "Vampire Fang"},
     Multi = false,
 })
@@ -2846,11 +2724,135 @@ spawn(
 end
 )
                                     
-local Toggle = Tabs.item:AddToggle("Start Farm", { Title = "Start Farm", Description = "Bắt Đầu Farm", Default = false })
+local Toggle = Tabs.Main:AddToggle("Start Farm", { Title = "Start Farm", Description = "Bắt Đầu Farm", Default = false })
 Toggle:OnChanged(function(Value)
     StartFarm = Value
     StopTween(StartFarm)
 end)
+
+	
+spawn(function()
+    while wait() do
+        if _G.RaidPirate then
+            pcall(function()
+                local CFrameBoss = CFrame.new(-5496.17432, 313.768921, -2841.53027)
+                if (CFrame.new(-5539.3115234375, 313.800537109375, -2972.372314453125).Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 500 then
+                    for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                        if _G.RaidPirate and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
+                            if (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude < 2000 then
+                                repeat task.wait()
+                                    AutoHaki()
+                                    EquipWeapon(_G.SelectWeapon)
+                                    v.HumanoidRootPart.CanCollide = false
+                                    topos(v.HumanoidRootPart.CFrame * Pos)
+                                until v.Humanoid.Health <= 0 or not v.Parent or not _G.RaidPirate
+                            end
+                        end
+                    end
+                else
+                    UnEquipWeapon(_G.SelectWeapon)
+                    if BypassTP then
+                    if (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - CFrameBoss.Position).Magnitude > 1500 then
+			        BTP(CFrameBoss)
+				    elseif (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - CFrameBoss.Position).Magnitude < 1500 then
+				    topos(CFrameBoss)
+					 end
+                 end
+          topos(CFrame.new(-5496.17432, 313.768921, -2841.53027))
+                end
+             end
+            )
+        end
+    end
+end
+)
+
+
+spawn(function()
+    while wait() do
+        pcall(function()
+            if _G.Auto_Nha_Dien and AnDepZai2 then
+                if game:GetService("Workspace").Enemies:FindFirstChild("Core") then
+                    for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                        if v.Name == "Core" and v.Humanoid.Health > 0 then
+                            repeat task.wait()
+                                AutoHaki()         
+                                EquipWeapon(_G.SelectWeapon)           
+                                topos(CFrame.new(448.46756, 199.356781, -441.389252))
+                            until v.Humanoid.Health <= 0 or _G.Auto_Nha_Dien == false
+                        end
+                    end
+                else             
+                    topos(CFrame.new(448.46756, 199.356781, -441.389252))
+                end
+            end
+        end)
+    end
+end)
+
+local Ren = {
+    ["Snow Lurker"] = CFrame.new(5480.55762, 28.8536663, -6814.50293),
+    ["Arctic Warrior"] = CFrame.new(6118.56836, 28.3932438, -6259.84961)
+}
+
+spawn(function()
+    spawn(function()
+        while wait(.1) do
+            if RenGuKu and _G.BringMonster and AnDepZai2 then
+                pcall(function()
+                    for i, v in pairs(game.Workspace.Enemies:GetChildren()) do
+                        if v.Name == "Snow Lurker" or v.Name == "Arctic Warrior" then
+                            local targetCFrame = Ren[v.Name]
+                            if targetCFrame then
+                                v.HumanoidRootPart.CFrame = targetCFrame
+                            end
+                            v.Head.CanCollide = false
+                            v.Humanoid.Sit = false
+                            v.HumanoidRootPart.CanCollide = false
+                            v.Humanoid.JumpPower = 0
+                            v.Humanoid.WalkSpeed = 0
+                            if v.Humanoid:FindFirstChild('Animator') then
+                                v.Humanoid:FindFirstChild('Animator'):Destroy()
+                            end
+                            sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", math.huge)
+                        end
+                    end
+                end)
+            end
+        end
+    end)
+end)
+
+
+spawn(function()
+        pcall(function()
+            while wait(.1) do
+                if _G.Random_Auto then
+                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Cousin","Buy")
+                end 
+            end
+        end)
+    end)
+
+
+spawn(function()
+   while wait() do
+     if _G.RandomBone then
+        local args = {
+            [1] = "Bones",
+            [2] = "Buy",
+            [3] = 1,
+            [4] = 1
+            }
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+       end
+    end
+end)
+
+if AnDepZai3 then
+
+----Tween Nay No Se Check Distance Va Chon Diem De Tele Nhanh Nhat Nhe , Minh Thi Ko Ranh Nen Se Skid Cua May Hub Khac Va Gan Chuc Nang Minh Tu Lam
+
 local Cuti = Tabs.item:AddSection("Farm Boss Server")
 local Toggle = Tabs.item:AddToggle("auto Change", { Title = "Auto Soul Reaper", Description = "", Default = false })
 Toggle:OnChanged(function(Value)
@@ -4632,9 +4634,10 @@ spawn(function()
             end
         end
     end)
+    
+local Anhyeuemko = Tabs.tu:AddSection("Fruit")
 
-local Mastery = Tabs.Raid:AddSection("Teleport Fruit")
-local Toggle = Tabs.Raid:AddToggle("Store Fruit", { Title = "Store Fruit", Default = false })
+local Toggle = Tabs.tu:AddToggle("Store Fruit", { Title = "Store Fruit", Default = true })
 Toggle:OnChanged(function(Value)
     getgenv().AutoStoreFruits = Value
 end)
@@ -4739,7 +4742,7 @@ task.spawn(function()
   end
 end)
 
-local Toggle = Tabs.Raid:AddToggle("Teleport Fruit", { Title = "Teleport Fruit", Default = false })
+local Toggle = Tabs.tu:AddToggle("Teleport Fruit", { Title = "Collect Fruit", Default = false })
 Toggle:OnChanged(function(Value)
     _G.Tweenfruit = Value
     StopTween(_G.Tweenfruit)
